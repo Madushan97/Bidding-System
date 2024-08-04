@@ -23,7 +23,7 @@ public class AuctionController {
 
     @PostMapping("/create")
     public ResponseEntity<StandardResponse> createAuction(@RequestBody AuctionRequestDto auctionRequestDto) {
-        AuctionResponseDto result = auctionService.createProduct(auctionRequestDto);
+        AuctionResponseDto result = auctionService.createAuction(auctionRequestDto);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         HttpStatus.OK.value(),

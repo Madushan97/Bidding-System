@@ -20,11 +20,6 @@ public class AuctionServiceImpl implements AuctionService {
     private final AuctionMapper auctionMapper;
 
     @Override
-    public AuctionResponseDto createProduct(AuctionRequestDto auctionRequestDto) {
-        return null;
-    }
-
-    @Override
     public List<AuctionResponseDto> getAllAuction() {
         List<Auction> auctionList = auctionRepository.findAll();
         List<AuctionResponseDto> auctionResponseDtoList = new ArrayList<>();
@@ -32,5 +27,12 @@ public class AuctionServiceImpl implements AuctionService {
             auctionResponseDtoList.add(auctionMapper.entityToResponseDto(auction));
         }
         return auctionResponseDtoList;
+    }
+
+    @Override
+    public AuctionResponseDto createAuction(AuctionRequestDto auctionRequestDto) {
+        Auction auction = auctionMapper.requestDtoToEntity(auctionRequestDto);
+        auctionRepository.save(auction);
+        return auctionMapper.entityToResponseDto(auction);
     }
 }

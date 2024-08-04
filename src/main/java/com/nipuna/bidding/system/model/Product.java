@@ -1,5 +1,7 @@
 package com.nipuna.bidding.system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +24,7 @@ public class Product {
     @Column(name = "description", nullable = true)
     private String description;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "product")
     private Set<Auction> auction;
 

@@ -14,8 +14,7 @@ import java.util.Date;
 public class AuctionRequestDto {
 
     private String name;
-    private String description;
     private Date startDate;
     private BigDecimal startPrice;
-    private Product product;
+    private Integer productId;
 }

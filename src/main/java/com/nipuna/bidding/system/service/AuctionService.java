@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface AuctionService {
 
-    AuctionResponseDto createProduct(AuctionRequestDto auctionRequestDto);
-
     List<AuctionResponseDto> getAllAuction();
+    AuctionResponseDto createAuction(AuctionRequestDto auctionRequestDto);
 }
