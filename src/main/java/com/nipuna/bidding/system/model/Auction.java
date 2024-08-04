@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,7 +38,7 @@ public class Auction {
     private Product product;
 
     @OneToMany(mappedBy = "auction")
-    private Set<Bid> bid;
+    private List<Bid> bid;
 
     @Column(name = "created_at")
     private Date createdAt;

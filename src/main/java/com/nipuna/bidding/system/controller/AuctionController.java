@@ -1,7 +1,10 @@
 package com.nipuna.bidding.system.controller;
 
+import com.nipuna.bidding.system.dto.requestDto.AuctionRequestDto;
 import com.nipuna.bidding.system.dto.requestDto.ProductRequestDto;
+import com.nipuna.bidding.system.dto.responseDto.AuctionResponseDto;
 import com.nipuna.bidding.system.dto.responseDto.ProductResponseDto;
+import com.nipuna.bidding.system.service.AuctionService;
 import com.nipuna.bidding.system.service.ProductService;
 import com.nipuna.bidding.system.util.StandardResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,18 +16,18 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1/product")
-public class ProductController {
+@RequestMapping("api/v1/auction")
+public class AuctionController {
 
-    private final ProductService productService;
+    private final AuctionService auctionService;
 
     @PostMapping("/create")
-    public ResponseEntity<StandardResponse> createProduct(@RequestBody ProductRequestDto productRequestDto) {
-        ProductResponseDto result = productService.createProduct(productRequestDto);
+    public ResponseEntity<StandardResponse> createAuction(@RequestBody AuctionRequestDto auctionRequestDto) {
+        AuctionResponseDto result = auctionService.createProduct(auctionRequestDto);
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         HttpStatus.OK.value(),
-                        "Create product successfully",
+                        "Create auction successfully",
                         result
                 ),
                 HttpStatus.OK
@@ -33,11 +36,11 @@ public class ProductController {
 
     @GetMapping("/getAll")
     public ResponseEntity<StandardResponse> getAllProduct() {
-        List<ProductResponseDto> result = productService.getAllProduct();
+        List<AuctionResponseDto> result = auctionService.getAllAuction();
         return new ResponseEntity<StandardResponse>(
                 new StandardResponse(
                         HttpStatus.OK.value(),
-                        "Get all product successfully",
+                        "Get all auction successfully",
                         result
                 ),
                 HttpStatus.OK
