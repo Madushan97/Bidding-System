@@ -1,5 +1,6 @@
 package com.nipuna.bidding.system.controller;
 
+import com.nipuna.bidding.system.exception.BiddingPriceExistException;
 import com.nipuna.bidding.system.exception.ProductNameExistException;
 import com.nipuna.bidding.system.util.StandardResponse;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,16 @@ public class GlobalExceptionHandler {
     public ResponseEntity<StandardResponse<String>> handleUserTypeExistException(ProductNameExistException ex, WebRequest request) {
         StandardResponse<String> response = new StandardResponse<>(
                 HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                null
+        );
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BiddingPriceExistException.class)
+    public ResponseEntity<StandardResponse<String>> handleBiddingPriceExistException(BiddingPriceExistException ex, WebRequest request) {
+        StandardResponse<String> response = new StandardResponse<>(
+                HttpStatus.ALREADY_REPORTED.value(),
                 ex.getMessage(),
                 null
         );

@@ -2,6 +2,7 @@ package com.nipuna.bidding.system.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "BID")
 @Data
+@ToString
 public class Bid {
 
     @Id
@@ -22,6 +24,9 @@ public class Bid {
     @ManyToOne
     @JoinColumn(name = "auction_id")
     private Auction auction;
+
+    @Column(name = "is_active")
+    private Boolean activeStatus;
 
     @Column(name = "created_at")
     private Date createdAt;
